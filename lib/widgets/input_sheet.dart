@@ -14,6 +14,7 @@ class InputSheet extends StatefulWidget {
 
 class _InputSheetState extends State<InputSheet> {
   String selectedDate = new DateFormat("dd MMM, yyyy").format(DateTime.now());
+  String weekDay = new DateFormat("E").format(DateTime.now());
   var nameController = TextEditingController();
   var priceController = TextEditingController();
   final Function _selectHandler;
@@ -22,7 +23,8 @@ class _InputSheetState extends State<InputSheet> {
 
   void _submitData() {
     if (nameController.text.isNotEmpty && priceController.text.isNotEmpty) {
-      _selectHandler(nameController.text, priceController.text, selectedDate);
+      _selectHandler(
+          nameController.text, priceController.text, selectedDate, weekDay);
       Navigator.of(context).pop();
     }
   }
@@ -66,8 +68,11 @@ class _InputSheetState extends State<InputSheet> {
                                   initialDate: DateTime.now(),
                                   firstDate: DateTime(2020),
                                   lastDate: DateTime(2050))
-                              .then((date) => selectedDate =
-                                  new DateFormat("dd MMM, yyyy").format(date));
+                              .then((date) {
+                            selectedDate =
+                                new DateFormat("dd MMM, yyyy").format(date);
+                            weekDay = new DateFormat("E").format(date);
+                          });
                         },
                       ),
                       Container(
@@ -87,7 +92,7 @@ class _InputSheetState extends State<InputSheet> {
                 child: Align(
                   alignment: Alignment.centerRight,
                   child: Text(
-                    "Add Task",
+                    "Add Item",
                     style: TextStyle(
                       color: Colors.red,
                     ),
