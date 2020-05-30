@@ -29,6 +29,13 @@ class _InputSheetState extends State<InputSheet> {
     }
   }
 
+  void _updateSheet(DateTime date) {
+    setState(() {
+      selectedDate = new DateFormat("dd MMM, yyyy").format(date);
+      weekDay = new DateFormat("E").format(date);
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -38,6 +45,16 @@ class _InputSheetState extends State<InputSheet> {
         child: Card(
           child: Column(
             children: <Widget>[
+              Container(
+                padding: EdgeInsets.all(10.0),
+                alignment: Alignment.topRight,
+                child: Text(
+                  selectedDate,
+                  style: TextStyle(
+                    color: Colors.cyan,
+                  ),
+                ),
+              ),
               Container(
                 padding: EdgeInsets.all(10),
                 child: TextField(
@@ -69,15 +86,13 @@ class _InputSheetState extends State<InputSheet> {
                                   firstDate: DateTime(2020),
                                   lastDate: DateTime(2050))
                               .then((date) {
-                            selectedDate =
-                                new DateFormat("dd MMM, yyyy").format(date);
-                            weekDay = new DateFormat("E").format(date);
+                            _updateSheet(date);
                           });
                         },
                       ),
                       Container(
                         child: Text(
-                          "Choose a date",
+                          "Change date",
                           style: TextStyle(
                             color: Colors.cyan,
                             fontSize: 15.0,

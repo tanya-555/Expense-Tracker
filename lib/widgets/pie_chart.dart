@@ -13,6 +13,7 @@ class PieChartRep extends StatelessWidget {
     return Container(
       child: PieChart(
         dataMap: chart,
+        animationDuration: Duration(milliseconds: 800),
       ),
     );
   }
