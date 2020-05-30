@@ -43,10 +43,11 @@ class _InputSheetState extends State<InputSheet> {
         width: 500,
         height: 700,
         child: Card(
+          margin: EdgeInsets.only(top: 50),
           child: Column(
             children: <Widget>[
               Container(
-                padding: EdgeInsets.all(10.0),
+                padding: EdgeInsets.all(20.0),
                 alignment: Alignment.topRight,
                 child: Text(
                   selectedDate,
@@ -61,6 +62,9 @@ class _InputSheetState extends State<InputSheet> {
                   controller: nameController,
                   keyboardType: TextInputType.text,
                   decoration: InputDecoration(labelText: "Item Name"),
+                  onSubmitted: (_) {
+                    _submitData();
+                  },
                 ),
               ),
               Container(
@@ -69,6 +73,9 @@ class _InputSheetState extends State<InputSheet> {
                   controller: priceController,
                   keyboardType: TextInputType.number,
                   decoration: InputDecoration(labelText: "Item Price"),
+                  onSubmitted: (_) {
+                    _submitData();
+                  },
                 ),
               ),
               Container(
