@@ -14,9 +14,10 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   List<ExpenseModel> _expensesList = [];
 
-  void _updateList(String name, String price) {
+  void _updateList(String name, String price, String date) {
     setState(() {
-      _expensesList.add(ExpenseModel(name: name, price: double.parse(price)));
+      _expensesList.add(
+          ExpenseModel(name: name, price: double.parse(price), date: date));
     });
   }
 

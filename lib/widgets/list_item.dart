@@ -53,7 +53,7 @@ class ListItem extends StatelessWidget {
                     ),
                   ),
                   Container(
-                    child: Text("\$" + item.price.toStringAsFixed(2)),
+                    child: Text(item.date),
                   ),
                 ],
               ),
@@ -66,7 +66,7 @@ class ListItem extends StatelessWidget {
                   selectHandler(item);
                 },
               ),
-            )
+            ),
           ],
         ),
       ),
