@@ -52,10 +52,33 @@ class _HomeState extends State<Home> {
             Container(
               height: 400,
               width: 500,
-              child: ExpenseList(
-                expensesList: _expensesList,
-                selectHandler: removeItem,
-              ),
+              child: _expensesList.isEmpty
+                  ? Column(
+                      children: <Widget>[
+                        Container(
+                          padding: EdgeInsets.all(10.0),
+                          child: Image.asset(
+                            'assets/images/attachment.jpg',
+                            width: 500,
+                            height: 300,
+                          ),
+                        ),
+                        Container(
+                          padding: EdgeInsets.all(20),
+                          child: Text(
+                            "No Item to display!",
+                            style: TextStyle(
+                              color: Colors.cyan,
+                              fontSize: 15.0,
+                            ),
+                          ),
+                        ),
+                      ],
+                    )
+                  : ExpenseList(
+                      expensesList: _expensesList,
+                      selectHandler: removeItem,
+                    ),
             ),
           ],
         )),
