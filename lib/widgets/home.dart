@@ -90,7 +90,7 @@ class _HomeState extends State<Home> {
                             child: PieChartRep(chart),
                           )),
                       Container(
-                        height: 400,
+                        height: 300,
                         width: 500,
                         child: ExpenseList(
                           expensesList: _expensesList,
