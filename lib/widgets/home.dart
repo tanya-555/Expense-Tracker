@@ -56,50 +56,49 @@ class _HomeState extends State<Home> {
           title: Text("Personal Expense Tracker"),
         ),
         body: Container(
-            child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
-            Container(
-                width: 500,
-                height: 200,
-                child: _expensesList.isEmpty
-                    ? SizedBox()
-                    : Container(
-                        child: PieChartRep(chart),
-                      )),
-            Container(
-              height: 400,
-              width: 500,
-              child: _expensesList.isEmpty
-                  ? Column(
-                      children: <Widget>[
-                        Container(
-                          padding: EdgeInsets.all(10.0),
-                          child: Image.asset(
-                            'assets/images/attachment.jpg',
-                            width: 500,
-                            height: 300,
+            child: _expensesList.isEmpty
+                ? Column(
+                    children: <Widget>[
+                      Container(
+                        padding: EdgeInsets.all(10.0),
+                        margin: EdgeInsets.only(top: 100),
+                        child: Image.asset(
+                          'assets/images/attachment.jpg',
+                          width: 500,
+                          height: 300,
+                        ),
+                      ),
+                      Container(
+                        padding: EdgeInsets.all(20),
+                        child: Text(
+                          "No Item to display!",
+                          style: TextStyle(
+                            color: Colors.cyan,
+                            fontSize: 15.0,
                           ),
                         ),
-                        Container(
-                          padding: EdgeInsets.all(20),
-                          child: Text(
-                            "No Item to display!",
-                            style: TextStyle(
-                              color: Colors.cyan,
-                              fontSize: 15.0,
-                            ),
-                          ),
+                      ),
+                    ],
+                  )
+                : Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
+                      Container(
+                          width: 500,
+                          height: 200,
+                          child: Container(
+                            child: PieChartRep(chart),
+                          )),
+                      Container(
+                        height: 400,
+                        width: 500,
+                        child: ExpenseList(
+                          expensesList: _expensesList,
+                          selectHandler: removeItem,
                         ),
-                      ],
-                    )
-                  : ExpenseList(
-                      expensesList: _expensesList,
-                      selectHandler: removeItem,
-                    ),
-            ),
-          ],
-        )),
+                      ),
+                    ],
+                  )),
         floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
         floatingActionButton: FloatingActionButton(
           child: Icon(Icons.add),
