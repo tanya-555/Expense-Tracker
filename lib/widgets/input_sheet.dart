@@ -40,8 +40,8 @@ class _InputSheetState extends State<InputSheet> {
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       child: Container(
-        width: 500,
-        height: 700,
+        width: MediaQuery.of(context).size.width * 1,
+        height: MediaQuery.of(context).size.height * 1,
         child: Card(
           margin: EdgeInsets.only(top: 50),
           child: Column(
